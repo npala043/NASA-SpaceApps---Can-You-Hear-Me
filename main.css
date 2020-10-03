@@ -2,7 +2,6 @@
     background-image: url("resources/space_background.jpg");
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto;
 }
 
 p {
@@ -13,9 +12,11 @@ body {
     /* background-image: url("resources/space_background.jpg"); */
 }
 
-img {
-    display: block;
-    margin: auto;
+.earth, .path, .mars, #static{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    color: white;
 }
 
 .earthGIF {
@@ -28,11 +29,11 @@ img {
     height: 80px;
 }
 
-.earth, .path, .mars {
-    display: grid;
-    align-self: center;
-    justify-content: center;
-    color: white;
+#static {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
 }
 
 .path {
