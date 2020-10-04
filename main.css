@@ -1,15 +1,10 @@
+body {
+  background-image: url("resources/space_background.jpg");  
+}
+
 .grid_container {
-    background-image: url("resources/space_background.jpg");
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-}
-
-p {
-    color: red;
-}
-
-body {
-    /* background-image: url("resources/space_background.jpg"); */
 }
 
 .earth, .path, .mars, #static{
@@ -38,4 +33,46 @@ body {
 
 .path {
     grid-column: 2/5;
+}
+.grid_container2 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 1em;
+}
+
+#earth_info, #path_info, #mars_info {
+    align-self: center;
+    justify-self: center;
+    background-color: white;
+    padding: 1em;
+    border-radius: 5%;
+}
+
+#path_info {
+    grid-column: 3;
+}
+
+#mars_info {
+    grid-column: 5;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+.nav_grid {
+    display: grid;
+    grid-template-columns:repeat(5, 1fr);
+    margin-bottom: 1em;
+}
+
+#nav_earth, #nav_mars {
+    justify-self: center;
+    align-self: center;
+}
+
+#nav_mars {
+    grid-column: 5;
 }

@@ -5,14 +5,19 @@
     <title>Blue Marble - Mars Comm. Demo</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="main.css" />
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 </head>
 
 <body>
     <h1>Hello</h1>
 
-    <div class="nav">
-        <button onclick="sendData()">Send Data</button>
+    <div class="nav_grid">
+        <div id="nav_earth">
+            <input id="EarthButton" type="button" value="Send Data" onclick="sendData()">
+        </div>
+        <div id="nav_mars">
+            <input id="MarsButton" type="button" value="Return Data" onclick="returnData()" disabled>
+        </div>
     </div>
     <div class="grid_container">
         <div class="earth">
@@ -22,12 +27,15 @@
         <div class="path">
             <!-- <img src=" " class="sunGIF"> -->
             <div>
-                <h1>TEST</h1>
+                <h1>Test</h1>
             </div>
         </div>
         <div class="mars">
             <img src="resources/mars_spin.gif" class="marsGIF">
         </div>
+    </div>
+    <div class="grid_container2">
+        <script src="js/tables.js"></script>
     </div>
 </body>
 
