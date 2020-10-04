@@ -1,5 +1,7 @@
 body {
-  background-image: url("../resources/space_background.jpg");  
+    background-image: url("../resources/space_background.jpg");
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
 }
 
 .grid_container {
@@ -7,7 +9,7 @@ body {
     grid-template-columns: repeat(5, 1fr);
 }
 
-.earth, .path, .mars, #static{
+.earth, .path, .mars, #static {
     display: grid;
     align-self: center;
     justify-self: center;
@@ -29,11 +31,15 @@ body {
     height: 50px;
     border-radius: 50%;
     position: relative;
+    margin-top: 3em;
 }
 
 .path {
     grid-column: 2/5;
+    color: white;
+    text-align: center;
 }
+
 .grid_container2 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -43,9 +49,10 @@ body {
 #earth_info, #path_info, #mars_info {
     align-self: center;
     justify-self: center;
-    background-color: white;
+    background-color: rgba(192, 192, 192, 0.7);
     padding: 1em;
-    border-radius: 5%;
+    border-radius: 15px;
+    color: white;
 }
 
 #path_info {
@@ -57,28 +64,62 @@ body {
 }
 
 table, th, td {
-    border: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
+    text-align: center;
 }
 
-th {
-    margin-top: 1em;
+caption {
+    padding-bottom: 1em;
 }
 
 .nav_grid {
     display: grid;
-    grid-template-columns:repeat(5, 1fr);
-    margin-bottom: 1em;
+    grid-template-columns: repeat(5, 1fr);
 }
 
 #nav_earth, #nav_mars {
     justify-self: center;
     align-self: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 #nav_mars {
     grid-column: 5;
+}
+
+#EarthButton, #MarsButton {
+    background-color: #0090FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 35px;
+}
+
+button {
+    background-color: #0090FF;
+    /* Blue */
+    ;
+    border: none;
+    color: white;
+    margin-top: 1em;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#date {
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#EarthButton:disabled, #MarsButton:disabled {
+    background-color: grey;
 }
 
 .event_feed {
@@ -86,11 +127,14 @@ th {
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color:rgba(192,192,192,0.3);
+    background-color: rgba(192, 192, 192, 0.3);
     width: 25em;
     height: 15em;
+    color: white;
 }
 
-.event_feed > ul {
+.event_feed>ul {
     list-style: none;
+    visibility: hidden;
 }
+

@@ -1,41 +1,43 @@
-// Sets the 'value' in the date selector as todays date
-// From stackoverflow: https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
+document.addEventListener("DOMContentLoaded", function () {
 
-today = mm + '/' + dd + '/' + yyyy;
-document.getElementById("date").value = today;
-//
-
-const d1 = new Date(2020, 10, 4);
-const d2 = new Date(2021, 9, 22);
-let setDate = document.getElementById("date");
-console.log(setDate);
+});
 
 function createDataset() {
-    this.dataAmount = randomInt(1000000, 5e+9);
-    this.distance = randomInt(54600000, 401000000);
+    this.dataAmount = randomInt(0, 5e+9);
+    this.distance = findDistance(new Date()) * 1.496e+8;
 }
 
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function updateFeed(string) {
+    const eventList = document.getElementsByTagName("ul");
+    const msg = document.createElement("li");
+
+    var d = new Date();
+    var n = d.toLocaleTimeString();
+    var msgTime = `[${n}]   `;
+
+    msg.innerHTML = msgTime + string;
+    msg.style.visibility = "visible";
+    eventList[0].prepend(msg);
+}
+
 const speedOfLightKMPS = 300000;
 const dataSet = new createDataset();
 const timeTraveledMinutes = (dataSet.distance / (speedOfLightKMPS)) / 60;
-//console.log(timeTraveledMinutes);
 
 function sendData() {
     const elem = document.getElementById("static");
     let pos = 0;
-
-    let randPos = randomInt(0, 1524);
-    console.log("random=" + randPos);
-
     const id = setInterval(frame, 10);
+
+    const feed = document.getElementsByTagName("li")
+    for (let e of feed) {
+        e.style.visibility = "visible";
+    }
+    updateFeed("Sending Data...");
 
     function frame() {
         if (pos >= 1524) {
@@ -44,16 +46,11 @@ function sendData() {
             clearInterval(id);
             const eBtn = document.getElementById("MarsButton");
             eBtn.disabled = false;
+            updateFeed("Data Sent Successfully!");
         } else {
             pos += 15.24 / timeTraveledMinutes;
             elem.style.left = pos + 'px';
         }
-
-        // TODO (maybe idk)
-        // if the random position is equal to current position of the static img
-        // stop the animation
-        // display error message in event feed
-        // reset when page refreshes
     }
     const mBtn = document.getElementById("EarthButton");
     mBtn.disabled = true;
@@ -63,11 +60,15 @@ function returnData() {
     const elem = document.getElementById("static");
     let pos = 1524;
     const id = setInterval(frame, 10);
+
+    updateFeed("Sending Data...");
+
     function frame() {
         if (pos <= 0) {
             clearInterval(id);
             const mBtn = document.getElementById("EarthButton");
             mBtn.disabled = false;
+            updateFeed("Data Received Successfully!");
         } else {
             pos -= 15.24 / timeTraveledMinutes;
             elem.style.left = pos + 'px';
@@ -77,3 +78,27 @@ function returnData() {
     eBtn.disabled = true;
 }
 
+function dateCalc() {
+    const au = dateSetter(document.getElementById("date").value);
+    // This would display the desired date on-screen and update
+    // the distance/transit time to reflect the new date
+}
+
+function findDistance(date) {
+
+    // Can approximate Earth<->Mars Distance between
+    // roughly Oct 4, 2020 and Nov. 30, 2022
+
+    const d1 = new Date(2020, 9, 3);
+    const d2 = new Date(2021, 8, 22);
+
+    if (date <= d2) {
+        let dateDiff = Math.floor((date - d1) / (1000 * 60 * 60 * 24));
+        let au = 1.11 * Math.cos(dateDiff * 2 * Math.PI / 708 + Math.PI) + 1.53;
+        return au;
+    } else {
+        let dateDiff = Math.floor((date - d2) / (1000 * 60 * 60 * 24));
+        let au = 1.05 * Math.cos(dateDiff * 2 * Math.PI / 868) + 1.59;
+        return au;
+    }
+}

@@ -9,39 +9,34 @@
 </head>
 
 <body>
-    <!-- <h1>Hello</h1> -->
 
     <div class="nav_grid">
         <div id="nav_earth">
-            <input id="EarthButton" type="button" value="Send Data" onclick="sendData()"/>
+            <input id="EarthButton" type="button" value="Send Data" onclick="sendData()" />
         </div>
         <div id="nav_mars">
-            <input id="MarsButton" type="button" value="Return Data" onclick="returnData()" disabled/>
+            <input id="MarsButton" type="button" value="Return Data" onclick="returnData()" disabled />
         </div>
     </div>
     <div class="grid_container">
         <div class="earth">
-            <img src="resources/earth_spin.gif" class="earthGIF"/>
-            <img src="resources/static.gif" id="static"/>
+            <img src="resources/earth_spin.gif" class="earthGIF" />
+            <img src="resources/static.gif" id="static" />
         </div>
         <div class="path">
-            <!-- <img src=" " class="sunGIF"> -->
-            <div class="send_timer"></div>
+            <p>Date</p>
+            <input type="date" id="date" name="date" value="2020-10-04" min="2020-10-04" max="2022-11-30"
+                placeholder="2020-10-04">
+            <button onclick="dateCalc()">Submit</button>
         </div>
         <div class="mars">
-            <img src="resources/mars_spin.gif" class="marsGIF"/>
+            <img src="resources/mars_spin.gif" class="marsGIF" />
         </div>
     </div>
     <div class="grid_container2">
         <script src="js/tables.js"></script>
     </div>
-    <div class="event_feed">
-        <p>test</p>
-    </div>
-    <div>
-        <label for="date">Select a date:</label>
-        <input type="date" id="date" name="date"
-        value="2020-10-04"
-        min="2020-10-04" max="2022-11-30">
+    <div id="calendar">
+
     </div>
 </body>
