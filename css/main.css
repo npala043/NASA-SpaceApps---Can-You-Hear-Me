@@ -1,5 +1,5 @@
 body {
-  background-image: url("resources/space_background.jpg");  
+  background-image: url("../resources/space_background.jpg");  
 }
 
 .grid_container {
@@ -89,4 +89,8 @@ th {
     background-color:rgba(192,192,192,0.3);
     width: 25em;
     height: 15em;
+}
+
+.event_feed > ul {
+    list-style: none;
 }
