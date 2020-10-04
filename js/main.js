@@ -29,6 +29,7 @@ const timeTraveledMinutes = (dataSet.distance / (speedOfLightKMPS)) / 60;
 function sendData() {
     const elem = document.getElementById("static");
     let pos = 0;
+
     let randPos = randomInt(0,1524);
     console.log("random=" + randPos);
     
@@ -47,7 +48,11 @@ function sendData() {
 
         }
 
-
+        // TODO (maybe idk)
+        // if the random position is equal to current position of the static img
+        // stop the animation
+        // display error message in event feed
+        // reset when page refreshes
     }
     const mBtn = document.getElementById("EarthButton");
     mBtn.disabled = true;
