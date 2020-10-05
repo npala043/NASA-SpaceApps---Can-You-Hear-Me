@@ -29,6 +29,10 @@ const dataSet = new createDataset();
 const timeTraveledMinutes = (dataSet.distance / (speedOfLightKMPS)) / 60;
 
 function sendData() {
+    // This "animates" the sending of the static ball,
+    // as well as updating the feed at the bottom left
+    // of the page in conjunction with returnData()
+    
     const elem = document.getElementById("static");
     let pos = 0;
     const id = setInterval(frame, 10);
@@ -85,9 +89,10 @@ function dateCalc() {
 }
 
 function findDistance(date) {
-
     // Can approximate Earth<->Mars Distance between
     // roughly Oct 4, 2020 and Nov. 30, 2022
+    // Math courtesy of Sushanth and Pedro, implemented
+    // by Pedro and Nahuel
 
     const d1 = new Date(2020, 9, 3);
     const d2 = new Date(2021, 8, 22);
